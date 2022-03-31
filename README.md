@@ -1,7 +1,7 @@
 # 항해 ING_V2
 + 항해 ING에 로그인/회원가입 기능과 댓글 기능을 추가였습니다
 
-#요구사항
+# 요구사항
 <details>
 <summary>스프링 숙련 주차 요구사항</summary>
 <div markdown="1">   

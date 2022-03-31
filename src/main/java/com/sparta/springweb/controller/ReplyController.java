@@ -18,13 +18,6 @@ public class ReplyController<userId> {
     private final ReplyRepository ReplyRepository;
     private final ReplyService ReplyService;
 
-    @GetMapping("/api/reply")
-    public List<Reply> getReply(@AuthenticationPrincipal UserDetailsImpl userDetails) {
-        Long userId = userDetails.getUser().getId();
-        return ReplyService.getReply(userId);
-    }
-
-    // 게시글 id 로 댓글 조회
     @GetMapping("/api/reply/{postId}")
     public List<Reply> getReply(@PathVariable Long postId) {
         return ReplyService.getReply(postId);

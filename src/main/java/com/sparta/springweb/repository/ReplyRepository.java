@@ -1,6 +1,5 @@
 package com.sparta.springweb.repository;
 
-
 import com.sparta.springweb.model.Reply;
 import org.springframework.data.jpa.repository.JpaRepository;
 

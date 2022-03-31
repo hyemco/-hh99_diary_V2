@@ -6,14 +6,13 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@Getter // get 함수를 일괄적으로 만들어줍니다.
-@NoArgsConstructor // 기본 생성자를 만들어줍니다.
-@Entity // DB 테이블 역할을 합니다.
+@Getter
+@Entity
+@NoArgsConstructor
 public class Reply extends Timestamped {
 
-    // ID가 자동으로 생성 및 증가합니다.
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(nullable = false)
@@ -27,18 +26,6 @@ public class Reply extends Timestamped {
 
     @Column(nullable = false)
     private Long userId;
-
-    public Reply(Long postid, String username, String reply) {
-        this.postid = postid;
-        this.username = username;
-        this.reply = reply;
-    }
-
-    public Reply(ReplyRequestDto requestDto) {
-        this.postid = requestDto.getPostid();
-        this.username = requestDto.getUsername();
-        this.reply = requestDto.getReply();
-    }
 
     public Reply(ReplyRequestDto requestDto, Long userId) {
         this.postid = requestDto.getPostid();

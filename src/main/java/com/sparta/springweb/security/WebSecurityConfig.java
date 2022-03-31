@@ -9,10 +9,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
-@EnableWebSecurity // 스프링 Security 지원을 가능하게 함
+@EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Bean   // 비밀번호 암호화
+    @Bean
     public BCryptPasswordEncoder encodePassword() {
         return new BCryptPasswordEncoder();
     }
@@ -22,22 +22,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.headers().frameOptions().disable();
         http.authorizeRequests()
 
-                // image 폴더를 login 없이 허용
                 .antMatchers("/images/**").permitAll()
-                // css 폴더를 login 없이 허용
                 .antMatchers("/css/**").permitAll()
                 .antMatchers("/user/**").permitAll()
                 .antMatchers("/h2-console/**").permitAll()
-
-                // 메인페이지 접근허용
                 .antMatchers("/index/**").permitAll()
-                // 글 조회 접근허용
                 .antMatchers("/detail.html/**").permitAll()
-                // api 요청 접근허용
                 .antMatchers("/api/**").permitAll()
                 .antMatchers("/").permitAll()
                 .antMatchers("/**").permitAll()
-                // 전부 허용
                 .antMatchers("*").permitAll()
 
                 // 그 외 모든 요청은 인증과정 필요

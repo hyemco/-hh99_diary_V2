@@ -21,6 +21,7 @@ public class UserService {
         String username = requestDto.getUsername();
         String password = requestDto.getPassword();
         String password2 = requestDto.getPassword2();
+
         // 회원 ID 중복 확인
         Optional<User> found = userRepository.findByUsername(username);
 

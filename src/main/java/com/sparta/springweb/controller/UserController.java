@@ -5,7 +5,7 @@ import com.sparta.springweb.dto.SignupRequestDto;
 import com.sparta.springweb.security.UserDetailsImpl;
 import com.sparta.springweb.service.KakaoUserService;
 import com.sparta.springweb.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,16 +14,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
     private final KakaoUserService kakaoUserService;
 
-    @Autowired
-    public UserController(UserService userService, KakaoUserService kakaoUserService) {
-        this.userService = userService;
-        this.kakaoUserService = kakaoUserService;
-    }
 
     // 회원 가입 페이지
     @GetMapping("/user/signup")
@@ -31,7 +27,7 @@ public class UserController {
         return "signup";
     }
 
-    // 회원 가입 요청 처리
+    // 회원 가입
     @PostMapping("/user/signup")
     public String registerUser(SignupRequestDto requestDto, Model model) {
         if (userService.registerUser(requestDto).equals("")) {
@@ -42,13 +38,13 @@ public class UserController {
         }
     }
 
-    // 회원 로그인 페이지
+    // 로그인 페이지
     @GetMapping("/user/login")
     public String login() {
         return "login";
     }
 
-    // 로그인 에러 문구 표시
+    // 로그인 에러 표시
     @GetMapping("/user/login/error")
     public String loginError(Model model) {
         model.addAttribute("loginError", true);

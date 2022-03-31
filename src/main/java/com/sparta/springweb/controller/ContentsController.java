@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequiredArgsConstructor
 @RestController
+@RequiredArgsConstructor
 public class ContentsController {
 
     private final com.sparta.springweb.repository.ContentsRepository ContentsRepository;

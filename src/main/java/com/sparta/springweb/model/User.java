@@ -8,8 +8,8 @@ import javax.persistence.*;
 
 @Setter
 @Getter
-@NoArgsConstructor
 @Entity
+@NoArgsConstructor
 public class User extends Timestamped {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
@@ -27,7 +27,6 @@ public class User extends Timestamped {
     public User(String username, String password) {
         this.username = username;
         this.password = password;
-
         this.kakaoId = null;
     }
 

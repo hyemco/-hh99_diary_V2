@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequiredArgsConstructor
 @RestController
+@RequiredArgsConstructor
 public class ReplyController<userId> {
 
     private final ReplyRepository ReplyRepository;
@@ -33,7 +33,7 @@ public class ReplyController<userId> {
     // 댓글 작성
     @PostMapping("/api/reply")
     public boolean createReply(@RequestBody ReplyRequestDto requestDto, @AuthenticationPrincipal UserDetailsImpl userDetails) {
-        // 로그인 되어 있는 ID
+        // 로그인 확인하기
         if (userDetails != null) {
             Long userId = userDetails.getUser().getId();
             ReplyService.createReply(requestDto, userId);
